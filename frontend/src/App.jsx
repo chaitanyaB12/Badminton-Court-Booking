@@ -9,10 +9,6 @@ import AdminLoginPage from './pages/AdminLoginPage';
 import AdminSignupPage from './pages/AdminSignupPage';
 
 
-
-
-
-
 // Main pages
 import BookingPage from './pages/BookingPage';
 import AdminPanel from './pages/AdminPanel';
