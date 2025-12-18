@@ -19,6 +19,7 @@ export default function AdminPanel() {
         const res = await API.get('/bookings/all', {
           headers: { Authorization: `Bearer ${token}` },
         });
+
         setAllBookings(res.data.data || []);
       } catch (err) {
         console.log('Error fetching bookings:', err);
@@ -66,7 +67,7 @@ export default function AdminPanel() {
             <div className="admin-card">
               <div className="card-header">
                 <h2>📋 All Bookings</h2>
-                {/* optional refresh, can keep or remove */}
+               
               </div>
 
               {loading ? (
@@ -92,7 +93,7 @@ export default function AdminPanel() {
                     <tbody>
                       {allBookings.map((booking, idx) => (
                         <tr key={idx}>
-                          <td>{booking.userId?.email || 'Unknown'}</td>
+                          <td>{booking.userEmail || 'Unknown'}</td>
                           <td>{booking.courtName}</td>
                           <td>{new Date(booking.date).toLocaleDateString()}</td>
                           <td>{booking.time}</td>
