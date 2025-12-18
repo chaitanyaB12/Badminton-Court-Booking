@@ -18,7 +18,11 @@ mongoose.connect(process.env.MONGODB_URI)
 
 
 app.use('/api/auth', authRoutes);
-app.use('/api', bookingRoutes);  
+app.use('/api', bookingRoutes); 
+app.get('/', (req, res) => {
+  res.send('Badminton Court Booking API is running');
+});
+
 
 app.listen(process.env.PORT || 5000, () => {
   console.log(`🚀 Server running on port ${process.env.PORT || 5000}`);
