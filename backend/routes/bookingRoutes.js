@@ -136,7 +136,17 @@ router.get('/bookings/all', authMiddleware, async (req, res) => {
       .populate('userId', 'email')
       .sort({ date: 1, time: 1 });
 
-    res.json({ message: 'All bookings fetched', data: bookings });
+      const safeBookings = bookings.map(b => ({
+      courtName: b.courtName,
+      date: b.date,
+      time: b.time,
+      price: b.price,
+      status: b.status,
+      userEmail: b.userId?.email,
+      
+    }));
+
+    res.json({ message: 'All bookings fetched', data: safeBookings });
   } catch (err) {
     console.log('Fetch all bookings error:', err);
     res.status(500).json({ message: 'Error fetching bookings' });
